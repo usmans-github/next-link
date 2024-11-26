@@ -35,7 +35,7 @@ export default function Hero() {
           console.log(result)
           alert(result.message)
       })
-        .catch((error) => console.error(error));
+        .catch((error) => console.log(error));
   }
 
 
