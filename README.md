@@ -13,7 +13,7 @@ A simple and efficient URL shortening service built with Next.js. Next-Link allo
 
 - **Frontend**: [Next.js](https://nextjs.org/)  
 - **Database**: MongoDB  
-- **Backend**: Node.js, Express  
+- **Backend**: Node.js
 - **Styling**: Tailwind CSS  
 
 ## Installation
@@ -32,8 +32,8 @@ A simple and efficient URL shortening service built with Next.js. Next-Link allo
 3. Set up your environment variables:  
    Create a `.env.local` file in the root directory and add the following:  
    ```env
-   MONGO_URI=<Your MongoDB connection string>
-   BASE_URL=<Your base URL, e.g., http://localhost:3000>
+   MONGODB_URI=<Your MongoDB connection string>
+   NEXT_PUBLIC_HOST=<Your public URL, e.g., http://localhost:3000>
    ```
 
 4. Start the development server:  
