@@ -29,7 +29,7 @@ export default function Navbar() {
             GitHub
           </Link>
         </Button>
-        <Button variant="ghost" asChild>
+        <Button variant="ghost" >
           <Link href="/about">
             About
           </Link>

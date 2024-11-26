@@ -3,21 +3,44 @@
 import { useState } from 'react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { ClipboardCopy } from 'lucide-react'
+import { ClipboardCopy, ExternalLink } from 'lucide-react'
 
 export default function Hero() {
-  const [longUrl, setLongUrl] = useState('')
-  const [shortUrl, setShortUrl] = useState('')
-  const [generatedUrl, setGeneratedUrl] = useState('')
+  const [url, seturl] = useState("")
+  const [shorturl, setshorturl] = useState("")
+  const [generated, setGenerated] = useState("")
 
-  const generateShortUrl = () => {
-    // This is a mock function. In a real application, you'd call your backend API here.
-    const mockShortUrl = 'https://nxtlnk.com/' + Math.random().toString(36).substr(2, 6)
-    setGeneratedUrl(mockShortUrl)
+  const generate = () => {
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      
+      const raw = JSON.stringify({
+        "url": url,
+        "shorturl": shorturl
+      });
+      
+      const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+      };
+      
+      fetch("/api/generate", requestOptions)
+        .then((response) => response.json())
+        .then((result) =>{ 
+          setGenerated(`${process.env.NEXT_PUBLIC_HOST}/${shorturl}`)
+          setshorturl("")
+          seturl("")
+          console.log(result)
+          alert(result.message)
+      })
+        .catch((error) => console.error(error));
   }
 
+
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(generatedUrl)
+    navigator.clipboard.writeText(generated)
       .then(() => {
         alert('Copied to clipboard!')
       })
@@ -27,7 +50,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-background">
+    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-24 bg-background">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="space-y-2">
@@ -42,26 +65,37 @@ export default function Hero() {
             <Input
               type="url"
               placeholder="Enter your long URL"
-              value={longUrl}
-              onChange={(e) => setLongUrl(e.target.value)}
+              value={url}
+              onChange={e => { seturl(e.target.value) }} 
             />
             <Input
               type="text"
               placeholder="Enter your custom short URL"
-              value={shortUrl}
-              onChange={(e) => setShortUrl(e.target.value)}
+              value={shorturl}
+              onChange={e => { setshorturl(e.target.value) }} 
             />
-            <Button className="w-full" onClick={generateShortUrl}>
+            <Button className="w-full" onClick={generate}>
               Generate Short URL
             </Button>
           </div>
-          {generatedUrl && (
+          {generated && (
             <div className="w-full max-w-sm p-4 border rounded-lg bg-background">
               <p className="font-medium text-primary mb-2">Your generated URL:</p>
-              <div className="flex items-center space-x-2">
-                <Input value={generatedUrl} readOnly />
-                <Button size="icon" onClick={copyToClipboard}>
-                  <ClipboardCopy className="h-4 w-4" />
+              <div className="flex items-center space-x-2 mt-2">
+                <div className="relative flex-grow">
+                  <Input value={generated} readOnly className="pr-10" />
+                  <Button 
+                    size="icon" 
+                    onClick={copyToClipboard} 
+                    title="Copy to clipboard"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 bg-transparent text-black
+                     hover:bg-transparent"
+                  >
+                    <ClipboardCopy className  ="h-4 w-4" onClick={copyToClipboard} />
+                  </Button>
+                </div>
+                <Button size="icon" onClick={() => window.open(generated, '_blank')} title="Open in new tab">
+                  <ExternalLink className="h-4 w-4" />
                 </Button>
               </div>
             </div>
