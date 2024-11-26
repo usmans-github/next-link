@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next-Link
 
-## Getting Started
+A simple and efficient URL shortening service built with Next.js. Next-Link allows users to transform long URLs into compact, shareable links, with a clean and responsive UI.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Shorten URLs**: Quickly convert long links into short, user-friendly URLs.  
+- **Customizable Aliases**: Option to specify your own custom alias for the shortened link.  
+- **Analytics**: Track the number of clicks on your shortened URLs (coming soon).  
+- **Responsive Design**: Optimized for both desktop and mobile devices.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Frontend**: [Next.js](https://nextjs.org/)  
+- **Database**: MongoDB  
+- **Backend**: Node.js
+- **Styling**: Tailwind CSS  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/usmans-github/next-link.git
+   cd next-link
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:  
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Set up your environment variables:  
+   Create a `.env.local` file in the root directory and add the following:  
+   ```env
+   MONGODB_URI=<Your MongoDB connection string>
+   NEXT_PUBLIC_HOST=<Your public URL, e.g., http://localhost:3000>
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Start the development server:  
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Enter a long URL into the input field.
+2. (Optional) Provide a custom alias for your shortened link.
+3. Click the "Shorten" button to generate your shortened link.
+4. Copy and share the link as needed.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps to contribute:  
+
+1. Fork the repository.  
+2. Create a feature branch:  
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:  
+   ```bash
+   git commit -m "Add feature-name"
+   ```
+4. Push your branch:  
+   ```bash
+   git push origin feature-name
+   ```
+5. Submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- [Next.js](https://nextjs.org/) for providing a robust React framework.
+- [Tailwind CSS](https://tailwindcss.com/) for elegant and efficient styling.
+
+## Contact
+
+For questions or suggestions, feel free to contact me:  
+- **GitHub**: [Usman's GitHub](https://github.com/usmans-github)  
+- **Portfolio**: [Usman's Portfolio](https://usmans-portfolio.vercel.app)
