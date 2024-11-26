@@ -24,7 +24,7 @@ export default function Navbar() {
       </Link>
       <nav className="ml-auto flex gap-4 sm:gap-6">
         <Button variant="ghost" asChild>
-          <Link href="https://github.com/usmans-github/nextlink" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/yourusername/nextlink" target="_blank" rel="noopener noreferrer">
             <Github className="h-4 w-4 mr-2" />
             GitHub
           </Link>
